@@ -49,4 +49,545 @@
             background: var(--bg-card); 
             border-radius: var(--radius); 
             padding: 40px; 
-            margin-bottom: 3
+            margin-bottom: 32px; 
+            box-shadow: var(--shadow); 
+            border-top: 6px solid var(--blue);
+            text-align: center;
+        }
+        .header-pre { color: var(--sky); text-transform: uppercase; font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
+        .header-title { font-size: 32px; line-height: 1.2; color: var(--dark); font-weight: 700; margin-bottom: 16px; }
+        .header-sub { font-size: 18px; color: var(--grey); font-weight: 400; }
+        
+        .tags { display: flex; justify-content: center; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
+        .tag { background: #EEF4FF; color: var(--blue); padding: 4px 12px; border-radius: 100px; font-size: 13px; font-weight: 500; }
+
+        /* SECTIONS */
+        .section { 
+            background: var(--bg-card); 
+            border-radius: var(--radius); 
+            margin-bottom: 20px; 
+            box-shadow: var(--shadow); 
+            overflow: hidden; 
+            transition: transform 0.2s ease;
+        }
+        .section:hover { transform: translateY(-2px); }
+        
+        .section-header { 
+            padding: 24px; 
+            display: flex; 
+            align-items: center; 
+            cursor: pointer; 
+            border-bottom: 1px solid transparent; /* reserve space */
+        }
+        .section.collapsed .section-header { border-bottom: none; }
+        
+        .section-icon { 
+            width: 44px; height: 44px; 
+            background: #EEF4FF; 
+            color: var(--dark); 
+            border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 22px; 
+            margin-right: 16px; 
+            flex-shrink: 0; 
+        }
+        
+        .section-title { font-size: 20px; font-weight: 700; color: var(--dark); flex: 1; margin: 0; }
+        .section-toggle { 
+            width: 24px; height: 24px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: var(--grey); 
+            transition: transform 0.3s ease; 
+        }
+        .section.collapsed .section-toggle { transform: rotate(-90deg); }
+
+        .section-content { 
+            padding: 0 24px 32px 24px; 
+            color: var(--grey); 
+            font-size: 16px;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .section.collapsed .section-content { max-height: 0 !important; padding-bottom: 0; }
+        
+        /* CONTENT BLOCKS */
+        p { margin-bottom: 16px; }
+        ul, ol { margin-bottom: 24px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+
+        /* The "Pink" Box - for Warnings, Emphasis, Important */
+        .box-pink { 
+            background: var(--bg-pink-muted); 
+            padding: 24px; 
+            border-radius: 12px; 
+            margin: 24px 0; 
+            border-left: 4px solid var(--pink);
+        }
+        .box-pink h4 { color: var(--dark); margin: 0 0 8px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        
+        /* The "Blue" Box - for Info, Success, Pro-tips */
+        .box-blue { 
+            background: var(--bg-blue-muted); 
+            padding: 24px; 
+            border-radius: 12px; 
+            margin: 24px 0; 
+            border-left: 4px solid var(--blue);
+        }
+        .box-blue h4 { color: var(--dark); margin: 0 0 8px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+
+        /* Quote */
+        .quote { 
+            font-size: 18px; 
+            font-style: italic; 
+            color: var(--dark); 
+            border-left: 4px solid var(--sky); 
+            padding-left: 20px; 
+            margin: 32px 0; 
+        }
+        .quote-author { font-size: 14px; color: var(--grey); font-style: normal; margin-top: 8px; font-weight: 500; }
+
+        /* Stats Grid */
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 24px 0; }
+        .stat-card { background: var(--bg-body); border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #E5E7EB; }
+        .stat-val { font-size: 28px; font-weight: 700; color: var(--blue); line-height: 1.1; margin-bottom: 4px; }
+        .stat-lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--grey); }
+
+        /* CHECKLIST */
+        .checklist { 
+            background: var(--bg-card); 
+            padding: 32px; 
+            border-radius: var(--radius); 
+            margin-top: 40px; 
+            box-shadow: var(--shadow); 
+            border: 2px solid var(--bg-blue-muted);
+        }
+        .chk-header { flex: 1; }
+        .chk-title { font-size: 24px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+        .chk-desc { font-size: 14px; margin-bottom: 24px; }
+        
+        .chk-group-title { 
+            font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--pink); font-weight: 700; 
+            margin: 24px 0 12px 0; 
+        }
+        
+        .chk-item { 
+            display: flex; gap: 16px; padding: 12px 0; 
+            border-bottom: 1px solid #F3F4F6; cursor: pointer; 
+            transition: all 0.2s; 
+        }
+        .chk-item:hover { opacity: 0.8; }
+        .chk-item:last-child { border-bottom: none; }
+        
+        .checkbox { 
+            width: 22px; height: 22px; 
+            border: 2px solid var(--grey); border-radius: 6px; 
+            flex-shrink: 0; margin-top: 2px; position: relative;
+            transition: all 0.2s;
+        }
+        .chk-item.checked .checkbox { background: var(--blue); border-color: var(--blue); }
+        .chk-item.checked .checkbox::after { 
+            content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; 
+            border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); 
+        }
+        .chk-text strong { display: block; font-size: 15px; color: var(--dark); transition: color 0.2s; }
+        .chk-item.checked .chk-text strong { color: var(--grey); text-decoration: line-through; }
+        .chk-text span { font-size: 13px; color: var(--grey); }
+
+        /* Footer */
+        .footer { text-align: center; padding: 40px 0; margin-top: 20px; border-top: 1px solid #E5E7EB; }
+        .footer-logo { font-size: 16px; font-weight: 700; color: var(--blue); text-decoration: none; display: inline-block; margin-bottom: 8px; }
+        .footer-logo:hover { color: var(--pink); }
+        .footer-time { background: var(--bg-body); display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--dark); border: 1px solid #E5E7EB; }
+
+        @media (max-width: 600px) {
+            .header { padding: 24px; text-align: left; }
+            .header-title { font-size: 24px; }
+            .section-header { padding: 16px; }
+            .section-icon { width: 36px; height: 36px; font-size: 18px; margin-right: 12px; }
+            .section-content { padding: 0 16px 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <header class="header">
+            <div class="header-pre">Интерактивный конспект</div>
+            <h1 class="header-title">ВК с нуля: Как создать сообщество и не выгореть</h1>
+            <div class="header-sub">Практические шаги по упаковке личной страницы и сообщества ВКонтакте для экспертов, начинающих с нуля.</div>
+            <div class="tags">
+                <span class="tag">#ВКонтакте</span>
+                <span class="tag">#SMM</span>
+                <span class="tag">#Продвижение</span>
+                <span class="tag">#ЭкспертныйБлог</span>
+                <span class="tag">#Нейросети</span>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">💡</div>
+                <h2 class="section-title">Переосмысление подхода к ВК: от "пустоты" к первым подписчикам</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Спикер делится опытом, как его канал в ВК долгое время находился в «яме» без активности. Переломным моментом стало <strong>изменение названия</strong>.</p>
+                <div class="quote">
+                    «У меня было что-то типа «Родительство без крика». Какая-то такая шляпа. Я написала «Психология: родители, подростки, Расти сердцем».»
+                    <div class="quote-author">— Спикер</div>
+                </div>
+                <p>Это простое действие привело к стабильному притоку 2-3 новых подписчиков в неделю. Это указывает на важность <strong>оптимизации названия для поисковых запросов</strong> (индексации).</p>
+                <div class="box-blue">
+                    <h4>Инсайт</h4>
+                    <p>Даже при отсутствии активного постинга, правильно подобранное название, ориентированное на ключевые запросы целевой аудитории, может привлечь первых подписчиков. Это создает фундамент для дальнейшего развития.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🎯</div>
+                <h2 class="section-title">Разделение аудиторий и целей: Профессиональный блог vs. Личный дневник</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Основная проблема многих экспертов — попытка «смешать всё в одну кучу». Спикер приводит пример, когда в личном Telegram-канале она писала обо всём: от танцев до экспертных вопросов, что превращало его в «винегрет» для 30 друзей.</p>
+                <p>Ключевая мысль: <strong>под каждую целевую аудиторию должен быть свой «столбик» контента</strong>. Нельзя писать для учителей и для родителей детей в одном блоге, ожидая одинакового отклика.</p>
+                <div class="quote">
+                    «Если вы будете писать блог для учителей и для экспертов, и блог для родителей, дайте мне детей. Я говорю, будут разные вообще аудитории.»
+                    <div class="quote-author">— Спикер</div>
+                </div>
+                <p>Если цель — монетизация и привлечение клиентов, контент должен быть <strong>регулярным, сфокусированным и целенаправленным</strong>. Личная жизнь может быть интегрирована, но только в контексте экспертности и с сохранением инконгруэнтности.</p>
+                <div class="box-pink">
+                    <h4>Важно</h4>
+                    <p>Попытка охватить все сегменты аудитории и все темы приводит к размыванию личного бренда и низкой эффективности. "Я беру все" — путь к выгоранию и отсутствию четкого позиционирования.</p>
+                </div>
+                <p>Спикер признается, что ей не хватает времени и контента для ведения нескольких узконаправленных сообществ (например, для продюсерской деятельности). Она заполняет пробелы личной жизнью, танцами и прочим, что не всегда релевантно для экспертной аудитории.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🤖</div>
+                <h2 class="section-title">Нейросети в помощь: от идеи до инфографики</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Спикер активно использует нейросети для создания контента. В частности, она отмечает, что <strong>GPT стал одним из лучших инструментов для рисования и работы с текстом на картинках</strong>. Он способен генерировать:</p>
+                <ul>
+                    <li>Презентации и слайды.</li>
+                    <li>Прототипы сайтов и блоги.</li>
+                    <li>Все виды инфографики.</li>
+                </ul>
+                <p>Пример использования: спикер просто загрузила текст поста в GPT и попросила сделать к нему иллюстрацию. Получилась целая карусель изображений.</p>
+                <div class="quote">
+                    «К слову, вот это все сам нарисовал GPT. Я ему просто скинула текст вот этого, собственно, поста и сказала, сделай мне...»
+                    <div class="quote-author">— Спикер</div>
+                </div>
+                <p>Важно: для эффективной работы с GPT необходимо четко формулировать <strong>финальную задачу</strong>. Если цель — получить "карту компетенций" (кто я, что я, для кого я), то именно так и нужно ставить запрос. Иначе диалог может уйти в бесконечность.</p>
+                <div class="box-blue">
+                    <h4>Лайфхак по работе с GPT</h4>
+                    <p>Если GPT начинает "выпендриваться" или выдавать ошибки (например, не делает картинку), просто <strong>закройте текущий чат и создайте новый</strong>. В новом чате можно загрузить предыдущую картинку как референс и попросить изменить или доработать её. Также рекомендуется создавать <strong>отдельные чаты для разных задач</strong> (дизайнер, копирайтер, контент-план), чтобы нейросеть лучше понимала свою роль.</p>
+                </div>
+                <p>Спикер также упоминает о существовании других нейросетей, например, <strong>Genspark</strong>, который тоже хорошо работает с изображениями.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">💰</div>
+                <h2 class="section-title">ВК Донаты как пассивный доход: потенциал и подводные камни</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Спикер хочет использовать ВК Донаты для создания <strong>мини-уроков для начинающих техспецов</strong> или тех, у кого нет возможности заказать полноценную услугу. Это рассматривается как источник условно пассивного дохода.</p>
+                <div class="box-pink">
+                    <h4>Проблема</h4>
+                    <p>Визуальное оформление сообщества вызывает у спикера "раздражение" и "беду" с фантазией. Пока сообщество не выглядит "красиво", нет желания его вести. Это классическая ловушка перфекционизма.</p>
+                </div>
+                <p>Стратегия для донатов в фитнес-центре:
+                <ol>
+                    <li><strong>Перевод подписчиков в клиентов:</strong> Донаты как прогрев к студии.</li>
+                    <li><strong>Поддержка существующих клиентов:</strong> Контент для тех, кто уже ходит на занятия (детальная проработка упражнений, домашние тренировки).</li>
+                </ol>
+                <p>Важно: контент должен формироваться <strong>от запросов аудитории</strong>, а не от того, что хочется опубликовать. Пример негативного опыта: блогер, которая постоянно продает, не давая ценности, вызывает отторжение.</p>
+                <div class="quote">
+                    «Блин, ты хотя бы для того, чтобы купили, разведи хоть чуть-чуть толком.»
+                    <div class="quote-author">— Спикер</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🌐</div>
+                <h2 class="section-title">ВКонтакте: Гипермаркет возможностей и алгоритмы ранжирования</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>ВКонтакте описывается как <strong>«гипермаркет возможностей»</strong>, собравший в себе плюсы всех соцсетей. Несмотря на наличие «дичи» в ленте, платформу можно настроить под себя.</p>
+                <p><strong>Инструменты ВК:</strong></p>
+                <ul>
+                    <li><strong>Клипы (аналог TikTok/Reels):</strong> 15-минутные экспертные видео, выстраивающие доверительные отношения. Выходят за рамки подписчиков, сразу показываются новой аудитории.</li>
+                    <li><strong>Статьи:</strong> Длинные публикации, которые, в отличие от постов, <strong>индексируются в поисковиках</strong> (Яндекс, Google). Важно правильно обозначать поисковые запросы и ключевые слова.</li>
+                    <li><strong>Каналы (аналог Telegram):</strong> Встроенный мессенджер для более глубокого взаимодействия.</li>
+                    <li><strong>Сторис:</strong> Необязательно снимать себя; можно показывать рабочий стол, мысли дня, но всегда в рамках экспертности.</li>
+                </ul>
+                <div class="box-blue">
+                    <h4>Важный совет</h4>
+                    <p>Не нужно пытаться освоить все инструменты сразу. Начинать можно с 1-2 (например, регулярные посты и клипы/сторис), постепенно добавляя новые. Сейчас основной фокус — <strong>регулярные посты</strong>.</p>
+                </div>
+                <p><strong>Особенности алгоритмов ВК:</strong></p>
+                <ul>
+                    <li><strong>Единая лента:</strong> Пользователи не заходят целенаправленно к одному автору, а просто листают общую ленту.</li>
+                    <li><strong>Ранжирование:</strong> ВК показывает публикации, которые вызывают наибольший отклик (лайки, комментарии, репосты, сохранения). Это объясняет, почему «дичь» часто попадает в ленту – она провоцирует сильные эмоции.</li>
+                    <li><strong>"Неинтересно":</strong> Чтобы настроить ленту под себя, нужно активно использовать кнопку «Неинтересно» и «Скрыть из ленты все посты пользователя/сообщества».</li>
+                    <li><strong>Хаотичный порядок постов:</strong> Публикации могут выходить в ленте не сразу, а через несколько дней. Это усложняет создание прогревочных цепочек в общих постах сообщества. Для таких целей лучше подходят каналы.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">👤</div>
+                <h2 class="section-title">Личная страница vs. Сообщество: Правила и стратегии</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p><strong>Личная страница — это «цифровой паспорт»</strong>:</p>
+                <ul>
+                    <li><strong>Имя, фамилия:</strong> Должны быть настоящими (как в паспорте) для возможности восстановления сообщества в случае блокировки.</li>
+                    <li><strong>Коммерческая деятельность:</strong> По правилам ВК, запрещена на личной странице (все продажи через сообщество). Однако, спикер отмечает появление донатов на личных страницах, что может свидетельствовать об изменениях.</li>
+                    <li><strong>Горизонтальные связи:</strong> ВК изначально создавался для общения друзей, поэтому личная страница воспринимается как "равный среди равных".</li>
+                    <li><strong>Доверие:</strong> Личная страница должна коррелировать с сообществом. <strong>Важно скрыть всё, что может «вышатнуть доверие»</strong> эксперта (шашлыки, семейные фото, устаревшие ссылки, цитаты, не относящиеся к деятельности). Это можно сделать через настройки приватности, создавая закрытые альбомы для разных сегментов аудитории (друзья, семья).</li>
+                    <li><strong>Инконгруэнтность:</strong> Личная жизнь может быть, но она должна быть созвучна и гармонична с экспертностью, не подрывая доверия. Рассказы о путешествиях можно связать с восстановлением ресурса для работы, а не просто как факт поездки. Клиенты идут на личность, поэтому важно раскрывать себя с разных сторон.</li>
+                </ul>
+                <p><strong>Сообщество — это «рабочий кабинет»</strong>:</p>
+                <ul>
+                    <li><strong>Коммерческая деятельность:</strong> Основное место для продаж и продвижения услуг.</li>
+                    <li><strong>Приоритет в рекомендациях:</strong> Сообщества чаще попадают в рекомендации, чем личные страницы, так как коммерческая деятельность разрешена именно там.</li>
+                    <li><strong>Регулярность:</strong> В сообществе допустима одна публикация в неделю для поддержания активности, но акцент должен быть на сообществах.</li>
+                </ul>
+                <div class="box-pink">
+                    <h4>Ошибка</h4>
+                    <p>Недооценка личной страницы. Она является дверью к эксперту. Закрытые или не соответствующие образу эксперта личные страницы могут оттолкнуть потенциальных клиентов, даже если сообщество оформлено идеально.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🎨</div>
+                <h2 class="section-title">Упаковка сообщества: Обложка, название, описание и меню</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p><strong>Ключевые элементы упаковки сообщества:</strong></p>
+                <ol>
+                    <li><strong>Название:</strong> Должно содержать ключевые слова для индексации в поиске. Пример: «Психология: родители, подростки, Расти сердцем».</li>
+                    <li><strong>Обложка:</strong>
+                        <ul>
+                            <li>Может быть нейтральной или отражать деятельность.</li>
+                            <li>Можно разместить свою фотографию или что-то нейтральное, но экспертное.</li>
+                            <li><strong>Важно:</strong> Указывать выгоды для клиента, решать его боли. Пример: «Три урока бесплатно».</li>
+                            <li><strong>Призыв к действию:</strong> Что сделать первым (например, «Смотри уроки бесплатно»).</li>
+                            <li><strong>Читабельность:</strong> Должна хорошо смотреться как на компьютере, так и на телефоне (особенно текст).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Аватарка:</strong> Если проект личный, можно использовать свою аватарку.</li>
+                    <li><strong>Описание:</strong>
+                        <ul>
+                            <li><strong>Краткость:</strong> Видны только первые 2-3 строки, которые должны заинтересовать.</li>
+                            <li><strong>Призыв к действию:</strong> В конце описания должен быть призыв (например, написать сообщение, перейти по ссылке).</li>
+                            <li><strong>Цель:</strong> Каждый элемент описания должен вести к конверсии подписчика в клиента.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Меню (кнопки навигации):</strong>
+                        <ul>
+                            <li><strong>Только внутренние ссылки:</strong> Перенаправляет только внутри сообщества (статьи, публикации, товары).</li>
+                            <li><strong>Приоритет:</strong> Размещать самое важное в первых 3-4 кнопках, так как дальше пользователи редко листают.</li>
+                            <li><strong>Четкие названия:</strong> Краткие, понятные слова/фразы, которые полностью видны на телефоне. Пример: «Подарок для тебя», «Начни здесь».</li>
+                            <li><strong>Визуализация:</strong> Можно использовать нейтральный фон или картинки по теме, но главное, чтобы текст был читабелен.</li>
+                            <li><strong>Скрытие технических кнопок:</strong> Кнопку «Подписаться» можно скрыть, чтобы она не занимала ценное место в меню.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Адрес сообщества:</strong> Вместо ID с цифрами можно написать красивое имя (например, имя+фамилия или деятельность+имя), если оно не занято.</li>
+                    <li><strong>Тематика сообщества:</strong> Важно выбрать правильно, так как это влияет на показ публикаций целевой аудитории.</li>
+                    <li><strong>Контакты:</strong> Мобильный телефон лучше не указывать напрямую, перенаправляя в личные сообщения, чтобы избежать спама и мошенников. Город важен для очной деятельности.</li>
+                </ol>
+                <div class="box-pink">
+                    <h4>Ошибки в оформлении</h4>
+                    <ul>
+                        <li><strong>Дублирование информации:</strong> Не нужно повторять кнопки, если они уже есть в другом месте (например, отзывы в меню и отдельным блоком).</li>
+                        <li><strong>Устаревшие отзывы:</strong> Отзывы 2018 года не актуальны и могут подорвать доверие.</li>
+                        <li><strong>Множество дипломов:</strong> Выкладывать 30+ сертификатов может вызвать подозрение, что они "куплены в переходе". Лучше выбрать 5-6 ключевых.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🤔</div>
+                <h2 class="section-title">Как понять свою аудиторию: Опыт пользователя</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Чтобы понять, что цепляет вашу аудиторию, <strong>побудьте простым пользователем ВКонтакте</strong>.</p>
+                <div class="box-blue">
+                    <h4>Практическое задание</h4>
+                    <p>Выделите 15 минут в день в течение недели и просто листайте ленту ВК, отвечая на вопросы:</p>
+                    <ul>
+                        <li>Почему вы захотели открыть ту или иную публикацию?</li>
+                        <li>Что привлекло вас в первых 3-х строчках поста?</li>
+                        <li>Что заставило нажать «показать еще»?</li>
+                        <li>Почему вы захотели лайкнуть публикацию или, наоборот, не захотели?</li>
+                        <li>Что побудило оставить комментарий, сохранить или переслать?</li>
+                    </ul>
+                </div>
+                <p>Это поможет отследить свои триггеры как клиента и понять, как работает человек в соцсетях. Алгоритмы ВК показывают публикации, которые собирают больше реакций, поэтому важно создавать контент, побуждающий к действию.</p>
+                <div class="quote">
+                    «Просто вы отследите свои триггеры, свое поведение, да, клиента, почему вы реагируете на ту или иную публикацию. Так вам станет более понятно, в принципе, как человек ведет себя в соцсетях и из чего строит свой контент.»
+                    <div class="quote-author">— Спикер</div>
+                </div>
+                <p>Также важно <strong>просить друзей о честной обратной связи</strong>. Объясните им, что поддержка нужна не только в виде подписки, но и в виде лайков, комментариев, сохранения, чтобы алгоритмы ВК видели активность. Уведомления можно включить нажатием колокольчика в сообществе.</p>
+            </div>
+        </section>
+
+        <div class="checklist">
+            <div class="chk-header">
+                <div class="chk-title">🚀 Чек-лист внедрения</div>
+                <div class="chk-desc">Отмечайте выполненные пункты, прогресс сохранится</div>
+            </div>
+
+            <div class="chk-group-title">Личная страница</div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Привести в порядок профиль</strong>
+                    <span>Указать настоящее имя и фамилию (как в паспорте).</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Скрыть личную информацию</strong>
+                    <span>Удалить или скрыть фото/видео/посты, которые могут подорвать экспертный образ (шашлыки, устаревшие цитаты). Использовать настройки приватности.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Проверить корреляцию с сообществом</strong>
+                    <span>Убедиться, что личная страница является продолжением сообщества и не вызывает диссонанса.</span>
+                </div>
+            </div>
+
+            <div class="chk-group-title">Сообщество</div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Разработать обложку</strong>
+                    <span>Создать обложку с учетом размеров для ПК и мобильных устройств, с выгодами для клиента и призывом к действию.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Выбрать название и адрес</strong>
+                    <span>Оптимизировать название для поиска и придумать красивый, запоминающийся адрес сообщества.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Написать описание</strong>
+                    <span>Составить краткое, интригующее описание с призывом к действию в конце.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Настроить меню</strong>
+                    <span>Создать кнопки навигации с внутренними ссылками на самые важные разделы сообщества.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Опубликовать первый пост-знакомство</strong>
+                    <span>Рассказать о себе, о том, куда попали люди и что полезного они здесь получат.</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 24px; height: 6px; background: #F3F4F6; border-radius: 3px; overflow: hidden;">
+                <div id="progress" style="width: 0%; height: 100%; background: var(--blue); transition: width 0.3s;"></div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div style="margin-bottom: 16px;">
+                <span class="footer-time">⏳ Сэкономлено времени на изучение: ~70 мин</span>
+            </div>
+            <div>
+                <a href="https://t.me/BukvitsaAI_bot?start=193351705" target="_blank" class="footer-logo">Создано в Буквица</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // SMART LOGIC
+        function toggleSection(header) {
+            const section = header.closest('.section');
+            const content = section.querySelector('.section-content');
+            section.classList.toggle('collapsed');
+            
+            if (!section.classList.contains('collapsed')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        }
+
+        function toggleCheck(item) {
+            item.classList.toggle('checked');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = document.querySelectorAll('.chk-item').length;
+            const checked = document.querySelectorAll('.chk-item.checked').length;
+            const pct = total ? (checked / total) * 100 : 0;
+            document.getElementById('progress').style.width = pct + '%';
+        }
+
+        // Init heights
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.section-content').forEach(el => {
+                el.style.maxHeight = el.scrollHeight + "px";
+            });
+        });
+        window.addEventListener('resize', () => {
+             document.querySelectorAll('.section:not(.collapsed) .section-content').forEach(el => {
+                el.style.maxHeight = el.scrollHeight + "px";
+            });
+        });
+    </script>
+</body>
+</html>
