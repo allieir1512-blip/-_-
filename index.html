@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- Фавиконка для вкладки браузера -->
-<link rel="icon" type="image/png" href="favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ВК с нуля: Как создать сообщество и не выгореть — пошаговый план</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -62,6 +62,41 @@
         
         .tags { display: flex; justify-content: center; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
         .tag { background: #EEF4FF; color: var(--blue); padding: 4px 12px; border-radius: 100px; font-size: 13px; font-weight: 500; }
+
+        /* НАВИГАЦИЯ (ВКЛАДКИ) */
+        .nav-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav-tabs::-webkit-scrollbar { height: 4px; }
+        .nav-tabs::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+        
+        .nav-tab {
+            text-decoration: none;
+            color: var(--grey);
+            background: var(--bg-card);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+        .nav-tab:hover {
+            color: var(--blue);
+            transform: translateY(-1px);
+        }
+        .nav-tab.active {
+            background: var(--blue);
+            color: #FFFFFF;
+            font-weight: 700;
+        }
 
         /* SECTIONS */
         .section { 
@@ -212,6 +247,11 @@
 </head>
 <body>
     <div class="container">
+        
+        <nav class="nav-tabs">
+            <a href="index.html" class="nav-tab active">22 и 29.05</a>
+            <a href="page2.html" class="nav-tab">05.06</a>
+        </nav>
         
         <header class="header">
             <div class="header-pre">Интерактивный конспект</div>
@@ -463,7 +503,7 @@
                         <li>Что побудило оставить комментарий, сохранить или переслать?</li>
                     </ul>
                 </div>
-                <p>Это поможет отследить свои триггеры как клиента и понять, как работает человек в соцсетях. Алгоритмы ВК показывают публикации, которые собирают больше реакций, поэтому важно создавать контент, побуждающий к действию.</p>
+                <p>Это поможет отследить свои триггеры как клиента и понять, как работает человек в соцсетях. Алгоритмы ВК показывают публикации, গুরুоторые собирают больше реакций, поэтому важно создавать контент, побуждающий к действию.</p>
                 <div class="quote">
                     «Просто вы отследите свои триггеры, свое поведение, да, клиента, почему вы реагируете на ту или иную публикацию. Так вам станет более понятно, в принципе, как человек ведет себя в соцсетях и из чего строит свой контент.»
                     <div class="quote-author">— Спикер</div>
