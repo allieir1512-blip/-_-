@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Секреты раскачки с нуля: от нейросетей до личного бренда</title>
+    <!-- Подключение Roboto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* БУКВИЦА BRAND STYLES v3.0 */
+        :root {
+            /* Palette */
+            --dark: #101827;       /* Заголовки */
+            --grey: #6B7280;       /* Текст */
+            --pink: #FA2F6B;       /* Акцент 1 */
+            --blue: #2463EB;       /* Акцент 2 */
+            --sky: #6AC2EA;        /* Доп. акцент */
+            --bg-body: #F9FAFB;    /* Фон */
+            --bg-card: #FFFFFF;    /* Плашки */
+            
+            /* Backgrounds for boxes */
+            --bg-blue-muted: #C9D7F5; 
+            --bg-pink-muted: #F9CCDB;
+            
+            /* Styles */
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Roboto', sans-serif; 
+            background: var(--bg-body); 
+            color: var(--grey); 
+            line-height: 1.65; 
+            padding: 24px 16px; 
+            font-weight: 400;
+        }
+        
+        strong { color: var(--dark); font-weight: 700; }
+        
+        .container { max-width: 760px; margin: 0 auto; }
+
+        /* HEADER */
+        .header { 
+            background: var(--bg-card); 
+            border-radius: var(--radius); 
+            padding: 40px; 
+            margin-bottom: 32px; 
+            box-shadow: var(--shadow); 
+            border-top: 6px solid var(--blue);
+            text-align: center;
+        }
+        .header-pre { color: var(--sky); text-transform: uppercase; font-size: 13px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px; }
+        .header-title { font-size: 32px; line-height: 1.2; color: var(--dark); font-weight: 700; margin-bottom: 16px; }
+        .header-sub { font-size: 18px; color: var(--grey); font-weight: 400; }
+        
+        .tags { display: flex; justify-content: center; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
+        .tag { background: #EEF4FF; color: var(--blue); padding: 4px 12px; border-radius: 100px; font-size: 13px; font-weight: 500; }
+
+        /* SECTIONS */
+        .section { 
+            background: var(--bg-card); 
+            border-radius: var(--radius); 
+            margin-bottom: 20px; 
+            box-shadow: var(--shadow); 
+            overflow: hidden; 
+            transition: transform 0.2s ease;
+        }
+        .section:hover { transform: translateY(-2px); }
+        
+        .section-header { 
+            padding: 24px; 
+            display: flex; 
+            align-items: center; 
+            cursor: pointer; 
+            border-bottom: 1px solid transparent; /* reserve space */
+        }
+        .section.collapsed .section-header { border-bottom: none; }
+        
+        .section-icon { 
+            width: 44px; height: 44px; 
+            background: #EEF4FF; 
+            color: var(--dark); 
+            border-radius: 12px; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 22px; 
+            margin-right: 16px; 
+            flex-shrink: 0; 
+        }
+        
+        .section-title { font-size: 20px; font-weight: 700; color: var(--dark); flex: 1; margin: 0; }
+        .section-toggle { 
+            width: 24px; height: 24px; 
+            display: flex; align-items: center; justify-content: center; 
+            color: var(--grey); 
+            transition: transform 0.3s ease; 
+        }
+        .section.collapsed .section-toggle { transform: rotate(-90deg); }
+
+        .section-content { 
+            padding: 0 24px 32px 24px; 
+            color: var(--grey); 
+            font-size: 16px;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+        .section.collapsed .section-content { max-height: 0 !important; padding-bottom: 0; }
+        
+        /* CONTENT BLOCKS */
+        p { margin-bottom: 16px; }
+        ul, ol { margin-bottom: 24px; padding-left: 24px; }
+        li { margin-bottom: 8px; }
+
+        /* The "Pink" Box - for Warnings, Emphasis, Important */
+        .box-pink { 
+            background: var(--bg-pink-muted); 
+            padding: 24px; 
+            border-radius: 12px; 
+            margin: 24px 0; 
+            border-left: 4px solid var(--pink);
+        }
+        .box-pink h4 { color: var(--dark); margin: 0 0 8px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        /*.box-pink h4::before { content: '⚡'; color: var(--pink); }
+        
+        /* The "Blue" Box - for Info, Success, Pro-tips */
+        .box-blue { 
+            background: var(--bg-blue-muted); 
+            padding: 24px; 
+            border-radius: 12px; 
+            margin: 24px 0; 
+            border-left: 4px solid var(--blue);
+        }
+        .box-blue h4 { color: var(--dark); margin: 0 0 8px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
+        /*.box-blue h4::before { content: '💎'; color: var(--blue); }
+
+        /* Quote */
+        .quote { 
+            font-size: 18px; 
+            font-style: italic; 
+            color: var(--dark); 
+            border-left: 4px solid var(--sky); 
+            padding-left: 20px; 
+            margin: 32px 0; 
+        }
+        .quote-author { font-size: 14px; color: var(--grey); font-style: normal; margin-top: 8px; font-weight: 500; }
+
+        /* Stats Grid */
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin: 24px 0; }
+        .stat-card { background: var(--bg-body); border-radius: 12px; padding: 16px; text-align: center; border: 1px solid #E5E7EB; }
+        .stat-val { font-size: 28px; font-weight: 700; color: var(--blue); line-height: 1.1; margin-bottom: 4px; }
+        .stat-lbl { font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: var(--grey); }
+
+        /* CHECKLIST */
+        .checklist { 
+            background: var(--bg-card); 
+            padding: 32px; 
+            border-radius: var(--radius); 
+            margin-top: 40px; 
+            box-shadow: var(--shadow); 
+            border: 2px solid var(--bg-blue-muted);
+        }
+        .chk-header { flex: 1; }
+        .chk-title { font-size: 24px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
+        .chk-desc { font-size: 14px; margin-bottom: 24px; }
+        
+        .chk-group-title { 
+            font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--pink); font-weight: 700; 
+            margin: 24px 0 12px 0; 
+        }
+        
+        .chk-item { 
+            display: flex; gap: 16px; padding: 12px 0; 
+            border-bottom: 1px solid #F3F4F6; cursor: pointer; 
+            transition: all 0.2s; 
+        }
+        .chk-item:hover { opacity: 0.8; }
+        .chk-item:last-child { border-bottom: none; }
+        
+        .checkbox { 
+            width: 22px; height: 22px; 
+            border: 2px solid var(--grey); border-radius: 6px; 
+            flex-shrink: 0; margin-top: 2px; position: relative;
+            transition: all 0.2s;
+        }
+        .chk-item.checked .checkbox { background: var(--blue); border-color: var(--blue); }
+        .chk-item.checked .checkbox::after { 
+            content: ''; position: absolute; left: 6px; top: 2px; width: 5px; height: 10px; 
+            border: solid white; border-width: 0 2px 2px 0; transform: rotate(45deg); 
+        }
+        .chk-text strong { display: block; font-size: 15px; color: var(--dark); transition: color 0.2s; }
+        .chk-item.checked .chk-text strong { color: var(--grey); text-decoration: line-through; }
+        .chk-text span { font-size: 13px; color: var(--grey); }
+
+        /* Footer */
+        .footer { text-align: center; padding: 40px 0; margin-top: 20px; border-top: 1px solid #E5E7EB; }
+        .footer-logo { font-size: 16px; font-weight: 700; color: var(--blue); text-decoration: none; display: inline-block; margin-bottom: 8px; }
+        .footer-logo:hover { color: var(--pink); }
+        .footer-time { background: var(--bg-body); display: inline-block; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 500; color: var(--dark); border: 1px solid #E5E7EB; }
+
+        @media (max-width: 600px) {
+            .header { padding: 24px; text-align: left; }
+            .header-title { font-size: 24px; }
+            .section-header { padding: 16px; }
+            .section-icon { width: 36px; height: 36px; font-size: 18px; margin-right: 12px; }
+            .section-content { padding: 0 16px 24px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <!-- HEADER -->
+        <header class="header">
+            <div class="header-pre">Интерактивный конспект</div>
+            <h1 class="header-title">Секреты раскачки с нуля: от нейросетей до личного бренда</h1>
+            <div class="header-sub">Как преодолеть "ступеньку ноль", использовать ИИ для продвижения и найти свой уникальный стиль в онлайне.</div>
+            <div class="tags">
+                <span class="tag">#Продвижение</span>
+                <span class="tag">#Нейросети</span>
+                <span class="tag">#ЛичныйБренд</span>
+                <span class="tag">#VK</span>
+                <span class="tag">#Мотивация</span>
+            </div>
+        </header>
+
+        <!-- ЦИКЛ СЕКЦИЙ (Повторяй этот блок) -->
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🤔</div>
+                <h2 class="section-title">"Ступенька ноль": почему так сложно начать?</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Спикеры обсуждают общую проблему: <strong>сложность начала любого дела, особенно в онлайн-пространстве, когда нет аудитории и обратной связи.</strong> Это ощущение "умалишённого, беседующего сам с собой сбоку у церкви".</p>
+                <p>Пример с ногой: одна из участниц не может поднять ногу для упражнения, хотя видела, что другие могут. Это метафора "ступеньки ноль", когда ты видишь, что что-то возможно, но сам не можешь это реализовать.</p>
+                
+                <div class="box-pink">
+                    <h4> Важно: Отсутствие отдачи</h4>
+                    <p>На "ступеньке ноль" нет никакой отдачи: ни подписчиков, ни комментариев, ни клиентов. Это демотивирует и создает ощущение бессмысленности усилий.</p>
+                </div>
+
+                <div class="quote">
+                    «Мы все втроём на одной и той же точке. На точке, когда сложно раскачаться, сложно начать, потому что ты не понимаешь, кому это надо, кто это будет смотреть, какая будет, в принципе, отдача и так далее.»
+                    <div class="quote-author">— Участница дискуссии</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">💡</div>
+                <h2 class="section-title">Как преодолеть инерцию: от рутины до маленьких шагов</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p><strong>Дисциплина vs Мотивация:</strong> Участницы спорят о том, что помогает начать. Одна считает, что должна быть рутина, как ежедневное приготовление еды для детей, которое не зависит от мотивации. Другая указывает, что онлайн-проект не является жизненно важной задачей и потому не выходит в приоритет.</p>
+                <p><strong>Приоритеты:</strong> Если что-то приносит деньги и является частью текущих обязательств (например, работа в институте), оно автоматически становится приоритетным. Проекты "с нуля" часто откладываются, потому что "непонятно, что из этого выйдет и не факт, что вернется".</p>
+                <div class="box-blue">
+                    <h4> Инсайт: "Уравнение с тремя неизвестными"</h4>
+                    <p>Многие проекты, особенно на старте, воспринимаются как "уравнение с тремя неизвестными" — непонятно, как, зачем и что. Это блокирует начало действий.</p>
+                </div>
+                <p><strong>Маленькие шаги:</strong> Даже если нет полной картины, важно делать хоть что-то. Аналогия с прополкой грядок: сначала кажется, что это неподъемно, но 15 минут работы могут дать чистый результат. Главное — <strong>начать, не зацикливаясь на идеальном результате.</strong></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🤖</div>
+                <h2 class="section-title">Нейросети как катализатор: ускоряем продвижение</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p>Нейросети кардинально меняют подход к созданию контента, сайтов и даже маркетинговых материалов. Участница делится опытом использования GPT для создания афиш и сайтов.</p>
+                <p><strong>Примеры использования нейросетей:</strong></p>
+                <ul>
+                    <li><strong>Афиши:</strong> Для фитнес-студии, которая платила дизайнерам 7000 рублей за афишу А4, GPT может создать аналогичную за 5 минут.</li>
+                    <li><strong>Сайты (вайб-кодинг):</strong> Нейросеть может написать код для сайта-визитки, включая интерактивные элементы, основываясь на текстовом описании. Это позволяет быстро создавать прототипы и даже полноценные страницы без глубоких знаний программирования.</li>
+                    <li><strong>Контент-планы и тексты:</strong> Нейросети помогают генерировать идеи, анализировать тексты по разным критериям, докручивать их и адаптировать под целевую аудиторию.</li>
+                </ul>
+                <div class="box-blue">
+                    <h4> Пример: Как работает "вайб-кодинг"</h4>
+                    <p>Вы описываете нейросети (например, GPT) желаемый сайт словами: "Мне нужна сайт-визитка, хочу, чтобы здесь было так-то, чтобы работали кнопочки, поставь мне туда игру...". Нейросеть генерирует код (HTML, CSS), который можно вставить в конструктор сайтов (например, Tilda) или загрузить на хостинг. Это значительная экономия времени и ресурсов.</p>
+                </div>
+                <p><strong>"Буквица" и интерактивные конспекты:</strong> Сервис "Буквица" (чат-бот в Telegram) может расшифровывать аудио/видео и создавать интерактивные HTML-конспекты, которые можно использовать как лид-магниты или для структурирования информации.</p>
+                <div class="box-pink">
+                    <h4> Важно: Разные нейросети — разный подход</h4>
+                    <p>Каждая нейросеть имеет свои особенности. Например, GPT позволяет работать в рамках одного диалога, переделывая запросы. Gemini же требует копировать весь предыдущий текст, если нужно вернуться на шаг назад и внести правки.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">💰</div>
+                <h2 class="section-title">Ценность экспертизы и синдром самозванца</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p><strong>Оценка своих знаний:</strong> Одна из участниц сталкивается с проблемой занижения стоимости своих услуг, считая, что для нее это "легко". Это классический синдром самозванца, когда свой обширный опыт и годы обучения обесцениваются.</p>
+                <div class="quote">
+                    «Один доллар за то, что я ударил, а вся остальная сумма за то, что я точно знал, куда, как и при каких обстоятельствах.»
+                    <div class="quote-author">— Анекдот о мастере и его опыте</div>
+                </div>
+                <p><strong>Аргументация цены:</strong> Чтобы брать адекватные деньги, нужно не только знать рыночную стоимость, но и уметь аргументировать, почему услуга стоит именно столько. Например, для оформления сообщества ВКонтакте нужно провести анализ ЦА, конкурентов, продумать продуктовую линейку, кнопки, контент-план и т.д. Это не просто "состряпать картинки".</p>
+                <p><strong>Уровень клиента:</strong> Важно понимать, с какой целевой аудиторией ты работаешь. Для новичков требуется более подробное объяснение "с нуля", для продвинутых — другой уровень коммуникации. Это влияет на подачу информации и стоимость услуг.</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🎭</div>
+                <h2 class="section-title">Личный бренд и самоидентификация: "Посмотрите на меня, но я вам ничего не покажу"</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p><strong>Конфликт в продвижении:</strong> Одна из участниц выражает внутренний конфликт: "Хочу, чтобы меня видели, но не хочу ничем делиться". Это блокирует активность в соцсетях, так как нет желания показывать личную жизнь или профессиональные навыки.</p>
+                <p><strong>Целевая аудитория и площадки:</strong> Возникает вопрос, где и что публиковать. ВКонтакте воспринимается как "бывшие мужики, одноклассники, одногруппники", которые не являются целевой аудиторией для профессиональных услуг. Telegram и Instagram кажутся более подходящими для профессиональной обратной связи.</p>
+                <p><strong>"Нейромаркетинг" и стиль:</strong> Как объединить строгий, профессиональный образ с личным "огоньком"? Нейросети могут помочь в этом, анализируя визуальный стиль и предлагая решения для создания целостного бренда. Главное — <strong>правильно задать вопрос нейросети, сформулировав свои внутренние противоречия.</strong></p>
+                <div class="box-pink">
+                    <h4> Важно: Синдром самозванца и рефлексия</h4>
+                    <p>Чрезмерная рефлексия может парализовать действия. Важно не доводить себя до чувства вины за нереализованные возможности, а использовать нейросети как "спарринг-партнера" для обдумывания идей и получения плана действий.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon">🛠️</div>
+                <h2 class="section-title">Практические советы для ВК: упаковка и первые шаги</h2>
+                <div class="section-toggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </div>
+            </div>
+            <div class="section-content">
+                <p><strong>Шаг ноль — упаковка сообщества:</strong> Прежде чем приглашать людей, сообщество должно быть упаковано. Это включает:
+                <ul>
+                    <li>Понимание "кто ты, зачем ты, зачем тут оставаться".</li>
+                    <li>Грамотное описание.</li>
+                    <li>Продуманная продуктовая линейка.</li>
+                    <li>Оформление кнопок меню.</li>
+                </ul>
+                <p>Только после этого можно приглашать знакомых и друзей, чтобы запустить "сарафанное радио".</p>
+                <p><strong>Первые посты и кнопки меню:</strong> Используйте первые посты как контент для кнопок меню. Они должны отвечать на ключевые вопросы о вас и вашем сообществе, помогая новому подписчику принять решение остаться.</p>
+                <div class="box-blue">
+                    <h4> Профессиональный совет: "Продвигать" и "Меню"</h4>
+                    <p>Кнопка "Продвигать" видна только администраторам и нужна для запуска рекламы. В меню можно размещать ссылки на посты внутри сообщества, а в виджеты — на сторонние ресурсы (например, на видео в YouTube, если оно опубликовано в канале). Для лид-магнитов и бесплатных уроков можно использовать отдельные кнопки.</p>
+                </div>
+                <p><strong>Стиль обложки:</strong> Обложка сообщества должна быть информативной, а не просто красивой картинкой. На ней должен быть текст, объясняющий, куда попал пользователь. Если есть конфликт стилей (строгий vs "огонек"), нейросеть может помочь найти компромисс и объединить их.</p>
+            </div>
+        </section>
+
+        <!-- ЧЕК-ЛИСТ -->
+        <div class="checklist">
+            <div class="chk-header">
+                <div class="chk-title">🚀 Чек-лист внедрения</div>
+                <div class="chk-desc">Отмечайте выполненные пункты, прогресс сохранится</div>
+            </div>
+
+            <!-- Группа 1 -->
+            <div class="chk-group-title">Прямо сейчас</div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Определить свой уровень</strong>
+                    <span>Понять, с кем вы готовы работать (новички, продвинутые, эксперты) и адаптировать подачу информации.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Сформулировать запрос к нейросети</strong>
+                    <span>Задайте ИИ вопрос о ваших внутренних противоречиях или задачах (например, "Как мне объединить строгий стиль с огоньком в личном бренде?").</span>
+                </div>
+            </div>
+            
+            <!-- Группа 2 -->
+            <div class="chk-group-title">На этой неделе</div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Упаковать сообщество ВКонтакте</strong>
+                    <span>Проверить и дополнить описание сообщества, чтобы оно четко отвечало на вопросы: "Кто вы?", "Зачем вы?", "Зачем здесь оставаться?".</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Создать первый пост для кнопки меню "Знакомство"</strong>
+                    <span>Напишите пост, который представит вас и ваше сообщество, чтобы новым подписчикам было легко понять вашу ценность.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Настроить первые кнопки меню</strong>
+                    <span>Используйте первый пост "Знакомство" в качестве контента для одной из кнопок меню.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Экспериментировать с нейросетями для контента</strong>
+                    <span>Попробуйте сгенерировать идеи для постов, адаптировать тексты или создать визуальные элементы с помощью ИИ.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Начать делиться "лайфстайл" контентом</strong>
+                    <span>Если нет профессионального контента, начните делиться моментами из жизни, подвязывая их к профессиональной тематике.</span>
+                </div>
+            </div>
+            <div class="chk-item" onclick="toggleCheck(this)">
+                <div class="checkbox"></div>
+                <div class="chk-text">
+                    <strong>Делать хоть что-то</strong>
+                    <span>Не ждать идеального момента, а делать маленькие, но регулярные шаги к цели, даже если они кажутся незначительными.</span>
+                </div>
+            </div>
+            
+            <div style="margin-top: 24px; height: 6px; background: #F3F4F6; border-radius: 3px; overflow: hidden;">
+                <div id="progress" style="width: 0%; height: 100%; background: var(--blue); transition: width 0.3s;"></div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div style="margin-bottom: 16px;">
+                <span class="footer-time">⏳ Сэкономлено времени на изучение: ~107 мин</span>
+            </div>
+            <div>
+                <a href="https://t.me/BukvitsaAI_bot?start=193351705" target="_blank" class="footer-logo">Создано в Буквица</a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // SMART LOGIC
+        function toggleSection(header) {
+            const section = header.closest('.section');
+            const content = section.querySelector('.section-content');
+            section.classList.toggle('collapsed');
+            
+            if (!section.classList.contains('collapsed')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        }
+
+        function toggleCheck(item) {
+            item.classList.toggle('checked');
+            updateProgress();
+        }
+
+        function updateProgress() {
+            const total = document.querySelectorAll('.chk-item').length;
+            const checked = document.querySelectorAll('.chk-item.checked').length;
+            const pct = total ? (checked / total) * 100 : 0;
+            document.getElementById('progress').style.width = pct + '%';
+        }
+
+        // Init heights
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.section-content').forEach(el => {
+                el.style.maxHeight = el.scrollHeight + "px";
+            });
+        });
+        window.addEventListener('resize', () => {
+             document.querySelectorAll('.section:not(.collapsed) .section-content').forEach(el => {
+                el.style.maxHeight = el.scrollHeight + "px";
+            });
+        });
+    </script>
+</body>
+</html>
