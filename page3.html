@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Секреты раскачки с нуля: от нейросетей до личного бренда</title>
+    
+    <!-- Фавиконка для вкладки браузера -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <!-- Подключение Roboto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,6 +65,41 @@
         
         .tags { display: flex; justify-content: center; gap: 8px; margin-top: 24px; flex-wrap: wrap; }
         .tag { background: #EEF4FF; color: var(--blue); padding: 4px 12px; border-radius: 100px; font-size: 13px; font-weight: 500; }
+
+        /* НАВИГАЦИЯ (ВКЛАДКИ) */
+        .nav-tabs {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .nav-tabs::-webkit-scrollbar { height: 4px; }
+        .nav-tabs::-webkit-scrollbar-thumb { background: #E5E7EB; border-radius: 4px; }
+        
+        .nav-tab {
+            text-decoration: none;
+            color: var(--grey);
+            background: var(--bg-card);
+            padding: 10px 20px;
+            border-radius: 100px;
+            font-weight: 500;
+            font-size: 15px;
+            box-shadow: var(--shadow);
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            border: 1px solid transparent;
+        }
+        .nav-tab:hover {
+            color: var(--blue);
+            transform: translateY(-1px);
+        }
+        .nav-tab.active {
+            background: var(--blue);
+            color: #FFFFFF;
+            font-weight: 700;
+        }
 
         /* SECTIONS */
         .section { 
@@ -125,7 +164,6 @@
             border-left: 4px solid var(--pink);
         }
         .box-pink h4 { color: var(--dark); margin: 0 0 8px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
-        /*.box-pink h4::before { content: '⚡'; color: var(--pink); }
         
         /* The "Blue" Box - for Info, Success, Pro-tips */
         .box-blue { 
@@ -136,7 +174,6 @@
             border-left: 4px solid var(--blue);
         }
         .box-blue h4 { color: var(--dark); margin: 0 0 8px 0; font-size: 16px; display: flex; align-items: center; gap: 8px; }
-        /*.box-blue h4::before { content: '💎'; color: var(--blue); }
 
         /* Quote */
         .quote { 
@@ -214,6 +251,13 @@
 <body>
     <div class="container">
         
+        <!-- ТАБЫ НАВИГАЦИИ -->
+        <nav class="nav-tabs">
+            <a href="index.html" class="nav-tab">22 и 29.05</a>
+            <a href="page2.html" class="nav-tab">05.06</a>
+            <a href="page3.html" class="nav-tab active">23.06</a>
+        </nav>
+
         <!-- HEADER -->
         <header class="header">
             <div class="header-pre">Интерактивный конспект</div>
@@ -266,7 +310,7 @@
                 <p><strong>Приоритеты:</strong> Если что-то приносит деньги и является частью текущих обязательств (например, работа в институте), оно автоматически становится приоритетным. Проекты "с нуля" часто откладываются, потому что "непонятно, что из этого выйдет и не факт, что вернется".</p>
                 <div class="box-blue">
                     <h4> Инсайт: "Уравнение с тремя неизвестными"</h4>
-                    <p>Многие проекты, особенно на старте, воспринимаются как "уравнение с тремя неизвестными" — непонятно, как, зачем и что. Это блокирует начало действий.</p>
+                    <p>Многие projects, особенно на старте, воспринимаются как "уравнение с тремя неизвестными" — непонятно, как, зачем и что. Это блокирует начало действий.</p>
                 </div>
                 <p><strong>Маленькие шаги:</strong> Даже если нет полной картины, важно делать хоть что-то. Аналогия с прополкой грядок: сначала кажется, что это неподъемно, но 15 минут работы могут дать чистый результат. Главное — <strong>начать, не зацикливаясь на идеальном результате.</strong></p>
             </div>
